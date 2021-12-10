@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 class ItemsFragment : Fragment() {
 
@@ -41,7 +42,7 @@ class ItemsFragment : Fragment() {
 		parent3.childItems.clear()
 		parent3.childItems.addAll(childItems3)
 
-		val itemList = ArrayList<Item>()
+		val itemList = LinkedList<Item>()
 		itemList.add(parent1)
 		itemList.add(parent2)
 		itemList.add(parent3)

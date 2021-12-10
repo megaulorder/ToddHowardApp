@@ -2,8 +2,9 @@ package com.megaulorder.toddhowardapp
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
-class ItemsAdapter(val itemList: ArrayList<Item>) :
+class ItemsAdapter(private val itemList: LinkedList<Item>) :
 	RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 	override fun getItemCount() = itemList.size
@@ -35,12 +36,19 @@ class ItemsAdapter(val itemList: ArrayList<Item>) :
 	}
 
 	fun removeItems(position: Int, items: List<Item>) {
-		itemList.removeAll(items)
+		val iterator = itemList.listIterator(position)
+		for (i in 1..items.size) {
+			iterator.next()
+			iterator.remove()
+		}
 		notifyItemRangeRemoved(position, items.size)
 	}
 
 	fun insertItems(position: Int, items: List<Item>) {
-		itemList.addAll(position, items)
+		val iterator = itemList.listIterator(position)
+		for (item in items) {
+			iterator.add(item)
+		}
 		notifyItemRangeInserted(position, items.size)
 	}
 }
