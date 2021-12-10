@@ -2,9 +2,9 @@ package com.megaulorder.toddhowardapp
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
+import org.apache.commons.collections4.list.TreeList
 
-class ItemsAdapter(private val itemList: LinkedList<Item>) :
+class ItemsAdapter(private val itemList: TreeList<Item>) :
 	RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 	override fun getItemCount() = itemList.size

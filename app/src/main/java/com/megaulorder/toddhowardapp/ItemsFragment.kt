@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import org.apache.commons.collections4.list.TreeList
 import java.util.*
 
 class ItemsFragment : Fragment() {
@@ -42,7 +43,7 @@ class ItemsFragment : Fragment() {
 		parent3.childItems.clear()
 		parent3.childItems.addAll(childItems3)
 
-		val itemList = LinkedList<Item>()
+		val itemList = TreeList<Item>()
 		itemList.add(parent1)
 		itemList.add(parent2)
 		itemList.add(parent3)
