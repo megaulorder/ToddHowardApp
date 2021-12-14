@@ -2,9 +2,8 @@ package com.megaulorder.toddhowardapp
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.apache.commons.collections4.list.TreeList
 
-class ItemsAdapter(private val itemList: TreeList<Item>) :
+class ItemsAdapter(private val itemList: ArrayList<Item>) :
 	RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 	override fun getItemCount() = itemList.size
@@ -35,20 +34,14 @@ class ItemsAdapter(private val itemList: TreeList<Item>) :
 		}
 	}
 
-	fun removeItems(position: Int, items: List<Item>) {
-		val iterator = itemList.listIterator(position)
-		for (i in 1..items.size) {
-			iterator.next()
-			iterator.remove()
-		}
+	fun removeItems(position: Int, items: List<Child>) {
+		itemList.subList(position, position + items.size).clear()
+
 		notifyItemRangeRemoved(position, items.size)
 	}
 
-	fun insertItems(position: Int, items: List<Item>) {
-		val iterator = itemList.listIterator(position)
-		for (item in items) {
-			iterator.add(item)
-		}
+	fun insertItems(position: Int, items: List<Child>) {
+		itemList.addAll(position, items)
 		notifyItemRangeInserted(position, items.size)
 	}
 }
